@@ -1,34 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Notes on MobX
 
-## Getting Started
+* Store defination steps ->
+    1. types.model = the shape of the living state tree
+    2. actions on the model
+    3. Define views (computed properties) on the model
+    4. Create an instance of the Store model with initial property vals, using (.create)
 
-First, run the development server:
+* Perform aync functions with some model type => async/await -> flow/ yield
+* Below written code is the way to handle async actions using mst with help of generators
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+* ```.actions(self => ({
+  someAction: flow(function*() {
+    // value is typed as number
+    const value = yield* toGenerator(getDataAsync("input value"));
+    ...
+  }) ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  
