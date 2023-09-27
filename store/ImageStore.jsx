@@ -24,11 +24,11 @@ const ImageStore = types
       // Set a random index between 0 and 19
       self.currentIndex = Math.floor(Math.random() * 20);
 
-      self.id = self.currentIndex+1;
+      self.id = self.currentIndex + 1;
 
-      //to check the loader state
-      self.loadImage = true;
       try {
+        //to check the loader state
+        self.loadImage = true;
         // Make an API request
         const response = yield fetch(
           `https://rickandmortyapi.com/api/character/${self.id}`
@@ -71,7 +71,7 @@ const ImageStore = types
 const imageStore = ImageStore.create({
   currentIndex: 0,
   totalIds: 20,
-  id:1,
+  id: 1,
   imageUrl: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
   loadImage: false,
 });
